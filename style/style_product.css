@@ -55,12 +55,13 @@
     width: 100%;
     overflow: hidden;
     display: flex;
+    column-gap: 5px;
     justify-content: space-between;
 }
 
 
 .img3-container > div {
-    width: 30%;
+    width: 33%;
     overflow: hidden;
     display: flex;
     border-radius: 5px;
@@ -256,4 +257,44 @@
 
 .email-input {
     text-align: center;
+}
+
+
+
+.footer {
+    margin:20px;
+    display: flex;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    overflow: hidden;
+
+}
+
+.footer p {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.footer a {
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    color: #6F6868;
+}
+
+.shop {
+    min-width: 160px;
+}
+
+.help {
+    min-width: 160px;
+}
+
+.about {
+    min-width: 160px;
 }
