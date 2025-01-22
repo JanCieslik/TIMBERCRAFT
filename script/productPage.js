@@ -77,6 +77,34 @@ function loadProductDetails() {
         `;
 
         productDetails.innerHTML = productHTML;
+
+        const addToCartButton = document.querySelector('.add-cart');
+        addToCartButton.addEventListener('click', () => {
+          const quantity = document.querySelector('.quantity').value;
+          const productData = {
+            id: productId,
+            name: product.name,
+            price: product.price,
+            imageUrl: product.mainImageUrl,
+            quantity: quantity,
+          };
+
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+
+          const existingProductIndex = cart.findIndex(item => item.id === productId);
+          if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity = parseInt(cart[existingProductIndex].quantity) + parseInt(quantity);
+          } else {
+
+            cart.push(productData);
+          }
+
+
+          localStorage.setItem('cart', JSON.stringify(cart));
+
+          alert(`${product.name} added to cart!`);
+        });
       }
     } else {
       console.log("Produkt nie istnieje.");

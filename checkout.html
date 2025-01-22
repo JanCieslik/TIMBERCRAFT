@@ -5,23 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TimberCraft</title>
     <link rel="stylesheet" href="style/style_checkout.css">
+    <script>
+                    function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = ''; 
+
+            cart.forEach(item => {
+                const cartItemHTML = `
+                <div class="cart-item">
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price}</p>
+                    </div>
+                    <button class="remove-from-cart" data-id="${item.id}">Remove</button>
+                </div>
+                `;
+                cartList.innerHTML += cartItemHTML;
+            });
+
+
+            document.querySelectorAll('.remove-from-cart').forEach(button => {
+                button.addEventListener('click', (event) => {
+                const productId = event.target.getAttribute('data-id');
+                removeFromCart(productId);
+                });
+            });
+            }
+
+            function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            loadCart(); 
+            }
+
+            window.onload = loadCart;
+    </script>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <a href="#">
+            <a href="index.html">
                 <div class="logo">
                     <img src="img/logo.png" alt="">
                 </div>
             </a>
-            <a href="basket.html">
+            <a href="checkout.html">
                 <div class="cart">
                     <img src="img/cart.png" alt="">
                 </div>
             </a>
         </nav>
     </header>
-    <div class="wrapper">
+    <div class="wrapper">          
+        <div id="cart-list"></div>
         <form action="/submit" method="post" class="form-container">
             <div class="form-group">
                 <label for="email">Contact</label>
@@ -53,6 +94,26 @@
             </div>
             <button type="submit">go to Pay</button>
         </form>
+    </div>
+    <div class="footer">
+        <div class="shop">
+            <p>shop</p>
+            <a href="#">search</a>
+            <a href="#">products</a>
+            <a href="#">top sales</a>
+        </div>
+        <div class="help">
+            <p>help</p>
+            <a href="#">shopping policy</a>
+            <a href="#">returns & refund policy</a>
+            <a href="#">terms of service</a>
+            <a href="#">privacy policy</a>
+        </div>
+        <div class="about">
+            <p>about us</p>
+            <a href="#">about us</a>
+            <a href="#">contact</a>
+        </div>
     </div>
 </body>
 </html>

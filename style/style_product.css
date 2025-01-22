@@ -302,3 +302,17 @@
 .about {
     min-width: 160px;
 }
+
+@media (min-width:1024px) {
+    .footer {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 20px;
+    }
+    
+    .delivery {
+        font-size: 20px;
+    }
+}
