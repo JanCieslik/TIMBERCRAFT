@@ -1,3 +1,5 @@
+You can visit website here : https://jancieslik.github.io/TIMBERCRAFT/
+
 https://my-shop-12121.s3.eu-north-1.amazonaws.com/projekt_sklep/index.html
 
 The graphic design of the project was inspired by the website:
